@@ -3,13 +3,11 @@ package cn.tju.lab2;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,6 +16,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
+
+//代码执行结果存储在./result/lab2中
 
 public class ReadFile {
 	
@@ -57,10 +57,13 @@ public class ReadFile {
 		String text = null;
 		
 		while((text = is.readLine()) != null) {
+			//解析读取到的字符串，把句子分割为单词
 			StringTokenizer st = new StringTokenizer(text," ,?.!:\\\"\\\"''\\n#");
 			while(st.hasMoreElements()) {
 				String tempStr = st.nextToken().toLowerCase(); 
+				//统计单词频次
 				if(hm.containsKey(tempStr)) {
+					// 如果单词已存在map中
 					hm.put(tempStr, hm.get(tempStr)+1);
 				}else {
 					hm.put(tempStr,1);
